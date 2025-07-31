@@ -17,4 +17,16 @@ CREATE TABLE IF NOT EXISTS `user` (
     `created_by` VARCHAR(40) NOT NULL,
     `updated_at` DATE DEFAULT NULL,
     `updated_by` VARCHAR(40) DEFAULT NULL
-)
+);
+
+CREATE TABLE IF NOT EXISTS `artist` (
+    `artist_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(40) NOT NULL,
+    `date_of_birth` DATE NOT NULL,
+    `country` VARCHAR(40) NOT NULL,
+    `image_path` VARCHAR(400) DEFAULT NULL,
+    `created_at` DATE NOT NULL,
+    `created_by` VARCHAR(40) NOT NULL,
+    `updated_at` DATE DEFAULT NULL,
+    `updated_by` VARCHAR(40) DEFAULT NULL
+);
