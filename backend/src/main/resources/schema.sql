@@ -7,6 +7,19 @@ CREATE TABLE IF NOT EXISTS `genre` (
     `updated_by` VARCHAR(40) DEFAULT NULL
 );
 
+CREATE TABLE IF NOT EXISTS `title` (
+    `title_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `title` VARCHAR(255) NOT NULL,
+    `year` INT NOT NULL,
+    `genre_id` INT NOT NULL,
+    `country` VARCHAR(40) NOT NULL,
+    `created_at` DATE NOT NULL,
+    `created_by` VARCHAR(40) NOT NULL,
+    `updated_at` DATE DEFAULT NULL,
+    `updated_by` VARCHAR(40) DEFAULT NULL,
+    FOREIGN KEY (`genre_id`) REFERENCES genre(`genre_id`)
+);
+
 CREATE TABLE IF NOT EXISTS `user` (
     `user_id` INT AUTO_INCREMENT PRIMARY KEY,
     `username` VARCHAR(40) NOT NULL,
