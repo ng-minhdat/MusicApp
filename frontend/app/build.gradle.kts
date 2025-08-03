@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
 }
 
 android {
@@ -66,6 +67,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     // Coil
     implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation(libs.androidx.navigation.compose.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
