@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import com.example.frontend.data.ArtistsUiState
 import com.example.frontend.data.GenresUiState
 import com.example.frontend.data.TitlesUiState
@@ -38,29 +39,38 @@ fun HomeScreen(
             modifier = modifier.weight(1F),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            GenresList(
-                genresUiState = genresUiState,
-                modifier = modifier
-            )
+            Column {
+                Text("Genres", fontWeight = FontWeight.Bold)
+                GenresList(
+                    genresUiState = genresUiState,
+                    modifier = modifier
+                )
+            }
         }
         Row(
             modifier = modifier.weight(1F),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            ArtistsList(
-                artistsUiState = artistsUiState,
-                modifier = modifier
-            )
+            Column {
+                Text("Artists", fontWeight = FontWeight.Bold)
+                ArtistsList(
+                    artistsUiState = artistsUiState,
+                    modifier = modifier
+                )
+            }
         }
         Row(
             modifier = modifier.weight(1F),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            TitlesList(
-                titlesUiState = titlesUiState,
-                onTitleClicked = onTitleClicked,
-                modifier = modifier
-            )
+            Column {
+                Text("Songs", fontWeight = FontWeight.Bold)
+                TitlesList(
+                    titlesUiState = titlesUiState,
+                    onTitleClicked = onTitleClicked,
+                    modifier = modifier
+                )
+            }
         }
     }
 }
