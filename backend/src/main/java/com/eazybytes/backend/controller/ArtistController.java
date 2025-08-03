@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/artist")
 @AllArgsConstructor
@@ -38,6 +40,14 @@ public class ArtistController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(artistDto);
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<ArtistDto>> getAllArtists() {
+        List<ArtistDto> artistDtos = artistService.getAllArtists();
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(artistDtos);
     }
 
     @DeleteMapping("/delete")

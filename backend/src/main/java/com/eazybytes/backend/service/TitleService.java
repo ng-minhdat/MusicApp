@@ -11,6 +11,7 @@ import com.eazybytes.backend.repository.TitleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,6 +53,13 @@ public class TitleService {
         }
         TitleDto titleDto = TitleMapper.mapToTitleDto(optionalTitle.get(), new TitleDto());
         return titleDto;
+    }
+
+    public List<TitleDto> getAllTitles() {
+        List<Title> titles = titleRepository.findAll();
+        return titles.stream()
+                .map(title -> TitleMapper.mapToTitleDto(title, new TitleDto()))
+                .toList();
     }
 
     public void deleteTitle(String title) {

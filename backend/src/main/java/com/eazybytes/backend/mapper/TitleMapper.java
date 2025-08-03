@@ -15,6 +15,7 @@ public class TitleMapper {
     }
 
     public static TitleDto mapToTitleDto(Title title, TitleDto titleDto) {
+        titleDto.setTitleId(title.getTitleId());
         titleDto.setTitle(title.getTitle());
         titleDto.setYear(title.getYear());
         titleDto.setGenreId(title.getGenreId());

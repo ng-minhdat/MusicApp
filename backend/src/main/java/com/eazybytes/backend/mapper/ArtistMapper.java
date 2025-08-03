@@ -15,6 +15,7 @@ public class ArtistMapper {
     }
 
     public static ArtistDto mapToArtistDto(Artist artist, ArtistDto artistDto) {
+        artistDto.setArtistId(artist.getArtistId());
         artistDto.setName(artist.getName());
         artistDto.setDateOfBirth(artist.getDateOfBirth());
         artistDto.setCountry(artist.getCountry());

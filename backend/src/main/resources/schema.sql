@@ -43,3 +43,17 @@ CREATE TABLE IF NOT EXISTS `artist` (
     `updated_at` DATE DEFAULT NULL,
     `updated_by` VARCHAR(40) DEFAULT NULL
 );
+
+CREATE TABLE IF NOT EXISTS `song` (
+    `song_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `title_id` INT NOT NULL,
+    `release_date` DATE NOT NULL,
+    `artist_id` INT NOT NULL,
+    `length` INT NOT NULL,
+    `user_id` INT NOT NULL,
+    `path` VARCHAR(400) NOT NULL,
+    `created_at` DATE NOT NULL,
+    `created_by` VARCHAR(40) NOT NULL,
+    `updated_at` DATE DEFAULT NULL,
+    `updated_by` VARCHAR(40) DEFAULT NULL
+);

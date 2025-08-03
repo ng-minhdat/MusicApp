@@ -9,6 +9,7 @@ import com.eazybytes.backend.repository.GenreRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,6 +42,13 @@ public class GenreService {
         }
         GenreDto genreDto = GenreMapper.mapToGenreDto(optionalGenre.get(), new GenreDto());
         return genreDto;
+    }
+
+    public List<GenreDto> getAllGenres() {
+        List<Genre> genres = genreRepository.findAll();
+        return genres.stream()
+                .map(genre -> GenreMapper.mapToGenreDto(genre, new GenreDto()))
+                .toList();
     }
 
     public void deleteGenre(String genreName) {

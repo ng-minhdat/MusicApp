@@ -9,9 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/genre")
 @AllArgsConstructor
+@CrossOrigin
 public class GenreController {
     private final GenreService genreService;
 
@@ -37,6 +40,14 @@ public class GenreController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(genreDto);
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<GenreDto>> getAllGenres() {
+        List<GenreDto> genreDtos = genreService.getAllGenres();
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(genreDtos);
     }
 
     @DeleteMapping("/delete")

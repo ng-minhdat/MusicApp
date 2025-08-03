@@ -9,6 +9,7 @@ import com.eazybytes.backend.repository.ArtistRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,6 +42,13 @@ public class ArtistService {
         }
         ArtistDto artistDto = ArtistMapper.mapToArtistDto(optionalArtist.get(), new ArtistDto());
         return artistDto;
+    }
+
+    public List<ArtistDto> getAllArtists() {
+        List<Artist> artists = artistRepository.findAll();
+        return artists.stream()
+                .map(artist -> ArtistMapper.mapToArtistDto(artist, new ArtistDto()))
+                .toList();
     }
 
     public void deleteArtist(String name) {

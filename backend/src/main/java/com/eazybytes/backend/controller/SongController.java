@@ -2,8 +2,8 @@ package com.eazybytes.backend.controller;
 
 import com.eazybytes.backend.constants.ResponseConstants;
 import com.eazybytes.backend.dto.ResponseDto;
-import com.eazybytes.backend.dto.TitleDto;
-import com.eazybytes.backend.service.TitleService;
+import com.eazybytes.backend.dto.SongDto;
+import com.eazybytes.backend.service.SongService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,46 +12,54 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/title")
+@RequestMapping("/api/song")
 @AllArgsConstructor
-public class TitleController {
-    private final TitleService titleService;
+public class SongController {
+    private final SongService songService;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createTitle(@RequestBody TitleDto titleDto) {
-        titleService.createTitle(titleDto);
+    public ResponseEntity<ResponseDto> createSong(@RequestBody SongDto songDto) {
+        songService.createSong(songDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new ResponseDto(ResponseConstants.STATUS_201, ResponseConstants.MESSAGE_201));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateTitle(@RequestBody TitleDto titleDto) {
-        titleService.updateTitle(titleDto);
+    public ResponseEntity<ResponseDto> updateSong(@RequestBody SongDto songDto) {
+        songService.updateSong(songDto);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new ResponseDto(ResponseConstants.STATUS_200, ResponseConstants.MESSAGE_200));
     }
 
     @GetMapping("/get")
-    public ResponseEntity<TitleDto> getTitle(@RequestParam String title) {
-        TitleDto titleDto = titleService.getTitle(title);
+    public ResponseEntity<SongDto> getSong(@RequestParam Long songId) {
+        SongDto songDto = songService.getSong(songId);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(titleDto);
+                .body(songDto);
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<TitleDto>> getAllTitles() {
-        List<TitleDto> titleDtos = titleService.getAllTitles();
+    public ResponseEntity<List<SongDto>> getAllSongs() {
+        List<SongDto> songDtos = songService.getAllSongs();
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(titleDtos);
+                .body(songDtos);
+    }
+
+    @GetMapping("/getByTitle")
+    public ResponseEntity<List<SongDto>> getSongsByTitle(@RequestParam String title) {
+        List<SongDto> songDtos = songService.getSongsByTitle(title);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(songDtos);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteTitle(@RequestParam String title) {
-        titleService.deleteTitle(title);
+    public ResponseEntity<ResponseDto> deleteSong(@RequestParam Long songId) {
+        songService.deleteSong(songId);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new ResponseDto(ResponseConstants.STATUS_200, ResponseConstants.MESSAGE_200));
