@@ -13,14 +13,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.frontend.model.Genre
-import com.example.frontend.ui.ArtistsViewModel
-import com.example.frontend.ui.GenresViewModel
-import com.example.frontend.ui.MediaPlayerViewModel
-import com.example.frontend.ui.SongsViewModel
+import com.example.frontend.ui.viewmodel.ArtistsViewModel
+import com.example.frontend.ui.viewmodel.GenresViewModel
+import com.example.frontend.ui.viewmodel.MediaPlayerViewModel
+import com.example.frontend.ui.viewmodel.SongsViewModel
 import com.example.frontend.ui.screens.AppScreen
 import com.example.frontend.ui.screens.CreateGenreScreen
 import com.example.frontend.ui.screens.HomeScreen
-import com.example.frontend.ui.TitlesViewModel
+import com.example.frontend.ui.viewmodel.TitlesViewModel
 import com.example.frontend.ui.screens.SongScreen
 
 @Composable

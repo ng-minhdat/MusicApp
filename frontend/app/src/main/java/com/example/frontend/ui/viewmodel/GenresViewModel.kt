@@ -1,4 +1,4 @@
-package com.example.frontend.ui
+package com.example.frontend.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,10 +14,12 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class GenresViewModel : ViewModel() {
-    private val _genresUiState: MutableStateFlow<GenresUiState> = MutableStateFlow(GenresUiState.Loading)
+    private val _genresUiState: MutableStateFlow<GenresUiState> =
+        MutableStateFlow(GenresUiState.Loading)
     val genresUiState: StateFlow<GenresUiState> = _genresUiState.asStateFlow()
 
-    private val _createGenreUiState: MutableStateFlow<CreateGenreUiState> = MutableStateFlow(CreateGenreUiState())
+    private val _createGenreUiState: MutableStateFlow<CreateGenreUiState> =
+        MutableStateFlow(CreateGenreUiState())
     val createGenreUiState: StateFlow<CreateGenreUiState> = _createGenreUiState.asStateFlow()
 
     private fun getAllGenres() {
